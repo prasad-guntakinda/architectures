@@ -35,7 +35,7 @@ ___
 - When using the self-registration model, a service instance is responsible for registering and de-registering itself in the Service Registry. 
 - In addition, if necessary, a service instance sends heartbeat requests to keep its registration alive.
 
-![service_registration_self.png](service_registration_self.png)
+![service_registration_self.png](images/service_registration_self.png)
 
 - One advantage is that it’s relatively simple and doesn’t require other system components as intermediaries.
 -  a significant disadvantage is that it couples service instances to the Service Registry, which means we must implement the registration code in each language and framework used.
@@ -47,7 +47,7 @@ ___
 - When it detects a newly available service instance, it records it in its database. 
 - The Service Registry also de-registers terminated service instances.
 
-![service_registration_third-party.png](service_registration_third-party.png)
+![service_registration_third-party.png](images/service_registration_third-party.png)
 
 - One of the main advantages is that services are decoupled from the Service Registry. 
 - There’s no need to implement service registration logic for each programming language and framework.
@@ -64,7 +64,7 @@ ___
 - When using Client-Side Discovery, the Service Consumer is responsible for determining the network locations of available service instances and load balancing requests between them. 
 - The client lookup for service in service registry. Then the client uses a load-balancing algorithm to choose one of the available service instances and performs a request.
 
-![service_discovery_client-side.png](service_discovery_client-side.png)
+![service_discovery_client-side.png](images/service_discovery_client-side.png)
 
 - Giving responsibility for client-side load balancing is both a burden and an advantage. It’s an advantage because it saves an extra hop that we would’ve had with a dedicated load balancer. It’s a disadvantage because the Service Consumer must implement the load balancing logic.
 
@@ -74,7 +74,7 @@ ___
 -  Server-Side Discovery model, which uses an intermediary that acts as a Load Balancer. The client makes a request to a service via a load balancer that acts as an orchestrator. 
 - The load balancer queries the Service Registry and routes each request to an available service instance.
 
-![service_discovery_server-side.png](service_discovery_server-side.png)
+![service_discovery_server-side.png](images/service_discovery_server-side.png)
 
 - This is the main advantage of this approach. Indeed, creating this level of abstraction makes the Service Consumer lighter, as it doesn’t have to deal with the lookup procedure. As a matter of fact, there’s no need to implement the discovery logic separately for each language and framework that the Service Consumer uses.
 
